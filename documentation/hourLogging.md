@@ -3,5 +3,5 @@
 | day | time | description  |
 | :----:|:-----| :-----|
 | 14.3 | 2    | Looking at tutorials and some coding |
-|16.3 |   |   |
-| total   | 2   |  
+|15.3 | 2  | Setting up git repository and more coding of the project in unity   |
+| total   | 4   |  
