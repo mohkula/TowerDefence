@@ -6,4 +6,6 @@
 |15.3 | 2  | Setting up git repository and more coding of the project in unity   |
 |16.3| 1,5|    Some more coding following tutorials|
 |17.3|1| same as yesterday|
-| total   | 6,5   |  
+|20.3|3|Some more coding following tutorials|
+| total   | 9,5   |  
+
