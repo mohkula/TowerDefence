@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour{
 
+public TurretBlueprint standardTurret;
+public TurretBlueprint missileLauncher;
 BuildManager buildManager;
 
 
@@ -11,14 +13,14 @@ BuildManager buildManager;
         buildManager = BuildManager.instance;
     }
 
-    public void PurchaseStandardTurret ()
+    public void SelectStandardTurret ()
     {
-        buildManager.SetTurretToBuild(buildManager.standardTurretPrefab);
+        buildManager.SelectTurretToBuild(standardTurret);
     }
 
-    public void PurchaseMissileLauncher ()
+    public void SelectMissileLauncher ()
     {
-                buildManager.SetTurretToBuild(buildManager.missileLauncher);
+                buildManager.SelectTurretToBuild(missileLauncher);
 
     }
     
