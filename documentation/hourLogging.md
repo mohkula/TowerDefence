@@ -7,5 +7,6 @@
 |16.3| 1,5|    Some more coding following tutorials|
 |17.3|1| same as yesterday|
 |20.3|3|Some more coding following tutorials|
-| total   | 9,5   |  
+|22.3| 4|UI work, currency and gameover screen|
+| total   | 13,5   |  
 
