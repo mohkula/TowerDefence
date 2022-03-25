@@ -8,5 +8,7 @@
 |17.3|1| same as yesterday|
 |20.3|3|Some more coding following tutorials|
 |22.3| 4|UI work, currency and gameover screen|
-| total   | 13,5   |  
+|24.3|5|Pause menu, upgrading/selling of turrets|
+
+| total   | 18,5   |  
 
