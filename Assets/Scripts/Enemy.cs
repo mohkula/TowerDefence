@@ -1,24 +1,33 @@
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     public float speed = 10f;
 
-    public float health = 100f;
+    private float health = 100f;
+    public float startHealth = 100f;
 
     public int value = 50;
 
     private Transform target;
     private int wavepointIndex = 0;
 
+
+    [Header("Unity Sturff")]
+    public Image healthBar;
+
     void Start (){
         target = Waypoints.points[0];
+        health = startHealth;
     }
 
     public void TakeDamage (float amount)
     {
         health -= amount;
+
+        healthBar.fillAmount = health / startHealth;
 
         if(health <= 0)
         {

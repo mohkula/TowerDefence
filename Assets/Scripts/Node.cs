@@ -6,8 +6,13 @@ public class Node : MonoBehaviour{
     public Color hoverColor;
     public Vector3 positionOffset;
 
-    [Header("Optional")]
+   [HideInInspector]
     public GameObject turret;
+    [HideInInspector]
+    public TurretBlueprint turretBlueprint;
+
+    [HideInInspector]
+    public bool isUpgraded = false;
 
     private Renderer rend;
 
@@ -31,18 +36,72 @@ public class Node : MonoBehaviour{
 if(EventSystem.current.IsPointerOverGameObject()){
            return;
        }
+       
+        if (turret != null)
+        {
+            buildManager.SelectNode(this);
+                return;
+        }
+
         if (!buildManager.CanBuild)
         {
             return;
         }
-        if (turret != null)
+
+BuildTurret(buildManager.GetTurretToBuild());
+
+    }
+
+    void BuildTurret (TurretBlueprint blueprint)
+    {
+ if(PlayerStats.Money < blueprint.cost)
         {
-            Debug.Log("already build on this node");
+            Debug.Log("Not enough money to build");
             return;
         }
 
-        buildManager.BuildTurretOn(this);
+        PlayerStats.Money -= blueprint.cost;
+                    
 
+        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+        turret = _turret;
+
+        turretBlueprint = blueprint;
+
+
+        Debug.Log("Turret built");
+    }
+
+
+    public void SellTurret ()
+    {
+        PlayerStats.Money += turretBlueprint.GetSellAmount();
+        
+
+        Destroy(turret);
+        turretBlueprint = null;
+    }
+
+    public void UpgradeTurret()
+    {
+         if(PlayerStats.Money < turretBlueprint.upgradeCost)
+        {
+            Debug.Log("Not enough money to upgrade");
+            return;
+        }
+
+        PlayerStats.Money -= turretBlueprint.upgradeCost;
+
+        Destroy(turret);
+
+                   
+
+        GameObject _turret = (GameObject)Instantiate(turretBlueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
+        turret = _turret;
+
+    isUpgraded = true;
+
+         Debug.Log("Turret upgraded");
 
     }
 
