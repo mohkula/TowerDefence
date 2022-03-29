@@ -53,6 +53,7 @@ ui.SetActive(false);
     {
         target.SellTurret();
         BuildManager.instance.DeselectNode();
+        target.isUpgraded = false;
     }
 
 

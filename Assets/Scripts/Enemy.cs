@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public float speed = 10f;
+    public Transform partToRotate;
+    public float turnSpeed = 10f;
+
 
     private float health = 100f;
     public float startHealth = 100f;
@@ -39,6 +42,8 @@ public class Enemy : MonoBehaviour
     {
 
         PlayerStats.Money += value;
+
+        WaveSpawner.EnemiesAlive --;
         Destroy(gameObject);
     }
 
@@ -49,6 +54,14 @@ public class Enemy : MonoBehaviour
 
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+
+
+         
+    Quaternion lookRotation = Quaternion.LookRotation(dir);
+    Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+    partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+
 
         if (Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
@@ -72,6 +85,7 @@ public class Enemy : MonoBehaviour
     void EndPath ()
     {
     Destroy(gameObject);
+WaveSpawner.EnemiesAlive --;
     PlayerStats.Lives --;
     }
 

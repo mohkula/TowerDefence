@@ -6,6 +6,8 @@ public class Node : MonoBehaviour{
     public Color hoverColor;
     public Vector3 positionOffset;
 
+    public bool buildableOn = true;
+
    [HideInInspector]
     public GameObject turret;
     [HideInInspector]
@@ -18,6 +20,7 @@ public class Node : MonoBehaviour{
 
     private Color startColor;
     public Color notEnoughMoneyColor;
+    public Color cannotBuildHere;
 
     BuildManager buildManager;
 
@@ -26,12 +29,19 @@ public class Node : MonoBehaviour{
 
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
-
+        
         buildManager = BuildManager.instance;
+        
+        
     }
 
     void OnMouseDown()
     {
+
+        if(!buildableOn)
+        {
+            return;
+        }
 
 if(EventSystem.current.IsPointerOverGameObject()){
            return;
@@ -112,10 +122,20 @@ BuildTurret(buildManager.GetTurretToBuild());
            return;
        }
 
+      
+
        if (!buildManager.CanBuild)
         {
             return;
         }
+
+ if(!buildableOn)
+       {
+                              rend.material.color = cannotBuildHere;
+                              return;
+
+       }
+
         if(buildManager.HasMoney)
         {
        rend.material.color = hoverColor;

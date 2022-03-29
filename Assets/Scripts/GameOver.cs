@@ -19,6 +19,7 @@ public class GameOver : MonoBehaviour
    public void Retry()
    {
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       WaveSpawner.EnemiesAlive = 0;
    }
 
    public void Menu ()

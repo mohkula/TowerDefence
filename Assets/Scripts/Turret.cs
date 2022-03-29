@@ -12,6 +12,9 @@ public class Turret : MonoBehaviour
     private float fireCountdown = 0f;
     public float range = 15f;
 
+    public bool followingBullet = true;
+    
+
 
 [Header("Unity setup Fields")]
     public string enemyTag = "Enemy";
@@ -87,7 +90,14 @@ public class Turret : MonoBehaviour
 
         if(bullet != null){
 
-            bullet.Seek(target);
+            if(followingBullet)
+            {
+                bullet.Seek(target);
+            }
+            else{
+            bullet.setLandingSpot(target.transform.position);
+
+            }
         }
 
     }

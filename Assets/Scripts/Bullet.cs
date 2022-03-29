@@ -5,8 +5,14 @@ public class Bullet : MonoBehaviour
 {
    private Transform target;
 
+   private Vector3 landingSpot;
+
+   public float turnSpeed = 100f;
+
     public float speed = 70f;
 
+private bool following = true;
+    
     public float damage = 50f;
 
     public float explosionRadius = 0f;
@@ -15,21 +21,51 @@ public class Bullet : MonoBehaviour
 
    public void Seek (Transform _target)
    {
+    Debug.Log("seeking");
+       following = true;
 target = _target;
+   }
+
+   public void setLandingSpot(Vector3 spot)
+   {
+       Debug.Log("landing spot set");
+       following = false;
+landingSpot = spot;
    }
 
     void Update()
     {
 
+        
+
+
+if(following)
+{
+moveFollowing();
+
+}
+
+   else{
+       Debug.Log("move");
+       moveToLandingSpot();
+   }    
+
+  
+    
+        
+    }
+
+    void moveFollowing() 
+    {
         if(target == null)
         {
             Destroy(gameObject);
             return;
         }
-
-
-        Vector3 dir = target.position - transform.position;
+ Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
+
+
 
         if(dir.magnitude <= distanceThisFrame)
         {
@@ -39,8 +75,24 @@ target = _target;
 
         transform.Translate (dir.normalized * distanceThisFrame, Space.World);
         transform.LookAt(target);
-        
     }
+
+           void moveToLandingSpot()
+           {
+                Vector3 dir = landingSpot - transform.position;
+                        float distanceThisFrame = speed * Time.deltaTime;
+                        
+                        if(dir.magnitude <= distanceThisFrame)
+        {
+            HitTarget();
+            return;
+        }
+
+                        transform.Translate (dir.normalized * distanceThisFrame, Space.World);
+
+
+           }
+
 
     void HitTarget()
     {
