@@ -27,7 +27,9 @@ public class Node : MonoBehaviour{
     void Start()
     {
 
+
         rend = GetComponent<Renderer>();
+        rend.enabled = false;
         startColor = rend.material.color;
         
         buildManager = BuildManager.instance;
@@ -117,6 +119,7 @@ BuildTurret(buildManager.GetTurretToBuild());
 
    void OnMouseEnter()
    {
+   rend.enabled = true;
 
        if(EventSystem.current.IsPointerOverGameObject()){
            return;
@@ -151,6 +154,8 @@ BuildTurret(buildManager.GetTurretToBuild());
 
    void OnMouseExit()
    {
+          rend.gameObject.GetComponent<Renderer>().enabled = false;
+
        rend.material.color = startColor;
    }
 

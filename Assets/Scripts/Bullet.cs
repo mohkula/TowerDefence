@@ -116,6 +116,7 @@ moveFollowing();
 
     void Damage (Transform enemy)
     {
+        Debug.Log("damaging");
         Enemy e = enemy.GetComponent<Enemy>();
 
         if (e != null)
@@ -129,9 +130,11 @@ moveFollowing();
 
     void Explode ()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        Collider[] colliders = Physics.OverlapSphere(landingSpot, explosionRadius);
+        
         foreach(Collider collider in colliders)
         {
+            Debug.Log(collider.tag);
             if (collider.tag == "Enemy")
             {
                 Damage (collider.transform);
