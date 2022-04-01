@@ -10,5 +10,7 @@
 |22.3| 4|UI work, currency and gameover screen|
 |24.3|5|Pause menu, upgrading/selling of turrets|
 |29.3| 8| Added some assets and changed the GUI|
-| total   | 26,5   |  
+|31.3| 6| Added new enemies and a new tower|
+| total   | 32,5   |  
+
 
