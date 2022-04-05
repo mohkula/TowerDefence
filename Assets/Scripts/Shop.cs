@@ -7,6 +7,10 @@ public TurretBlueprint standardTurret;
 public TurretBlueprint missileLauncher;
 public TurretBlueprint standardTower;
 
+
+private TurretBlueprint selectedTurret;
+    public GameObject ui;
+
 BuildManager buildManager;
 
 
@@ -17,18 +21,29 @@ BuildManager buildManager;
 
     public void SelectStandardTurret ()
     {
-        buildManager.SelectTurretToBuild(standardTurret);
+        buildManager.BuildTurret(standardTurret);
     }
 
     public void SelectMissileLauncher ()
     {
-                buildManager.SelectTurretToBuild(missileLauncher);
+                buildManager.BuildTurret(missileLauncher);
 
     }
     public void SelectTower ()
     {
-                buildManager.SelectTurretToBuild(standardTower);
+                buildManager.BuildTurret(standardTower);
 
+    }
+
+    public void Toggle(bool b)
+    {
+            ui.SetActive(b);
+
+    }
+
+    public TurretBlueprint getSelectedTurret()
+    {
+return selectedTurret;
     }
     
 }

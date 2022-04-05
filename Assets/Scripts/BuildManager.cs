@@ -6,7 +6,11 @@ public class BuildManager : MonoBehaviour
 {
     //singleton
     public static BuildManager instance;
+    public Vector3 positionOffset;
 
+    public Shop shop;
+
+    public TurretUi tui;
     void Awake()
     {
 
@@ -19,14 +23,13 @@ public class BuildManager : MonoBehaviour
     }
 
 
-    public GameObject standardTurretPrefab;
-    public GameObject missileLauncher;
-
 
     private TurretBlueprint turretToBuild;
     private Node selectedNode;
 
-    public NodeUi nodeUi;
+    private Turret selectedTurret;
+
+    
 
     public bool CanBuild { get { return turretToBuild != null;} }
 
@@ -36,16 +39,17 @@ public class BuildManager : MonoBehaviour
 
     public void SelectNode (Node node)
     {
-        if(selectedNode == node)
-        {
-            DeselectNode();
-            return;
-        }
+        shop.Toggle(true);
+
+       
         selectedNode = node;
         turretToBuild = null;
 
-        nodeUi.SetTarget(node);
+    }
 
+    public void selectTurret (Turret turret)
+    {
+        selectedTurret = turret;
     }
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
@@ -55,15 +59,95 @@ public class BuildManager : MonoBehaviour
 
     public void DeselectNode ()
     {
+        selectedNode.Deselect();
         selectedNode = null;
-        nodeUi.Hide();
+        
     }
 
     public TurretBlueprint GetTurretToBuild()
     {
-        Debug.Log(turretToBuild);
-        return turretToBuild;
+        return shop.getSelectedTurret();
     }
     
+    public Node getSelectedNode()
+    {
+        return selectedNode;
+    }
+
+    public void BuildTurret (TurretBlueprint blueprint)
+    {
+        if(selectedNode == null)
+        {
+            return;
+        }
+
+ if(PlayerStats.Money < blueprint.cost)
+        {
+            Debug.Log("Not enough money to build");
+            return;
+        }
+
+        PlayerStats.Money -= blueprint.cost;
+                    
+  
+        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+       _turret.GetComponent<Turret>().setNode(selectedNode);
+       selectedNode.turret = _turret;
+       selectedNode.Deselect();
+       selectedNode = null;
+       shop.Toggle(false);
+
+      
+
+
+     
+    }
+
+    public Vector3 GetBuildPosition ()
+   {
+       if(selectedNode == null)
+       {
+           return selectedTurret.transform.position + positionOffset;
+       }
+       return selectedNode.transform.position + positionOffset;
+   }
+
+   
+
+
+
+  public void UpgradeTurret()
+    {
+         if(PlayerStats.Money < selectedTurret.blueprint.upgradeCost)
+        {
+           Debug.Log("Not enough money to upgrade");
+           return;
+        }
+
+        PlayerStats.Money -= selectedTurret.blueprint.upgradeCost;
+
+        Node nodeTurretWasOn = selectedTurret.getNode();
+        Destroy(selectedTurret.gameObject);
+
+                   
+
+        GameObject _turret = Instantiate(selectedTurret.blueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
+      
+ _turret.GetComponent<Turret>().setNode(nodeTurretWasOn);
+    
+    nodeTurretWasOn.turret = _turret;
+
+         Debug.Log("Turret upgraded");
+
+    }
+
+    public void sellTurret()
+    { 
+        
+        PlayerStats.Money += selectedTurret.blueprint.GetSellAmount();
+          Destroy(selectedTurret.gameObject);
+         
+
+    }
 
 }

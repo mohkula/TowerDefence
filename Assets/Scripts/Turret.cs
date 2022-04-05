@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-
+BuildManager buildManager;
     private Transform target;
 
+private Node node;
+
+
 [Header("Attributes")]
+
+public TurretBlueprint blueprint;
  public float fireRate = 1f;
     private float fireCountdown = 0f;
     public float range = 15f;
@@ -33,6 +38,7 @@ public class Turret : MonoBehaviour
 
     void Start()
     {
+         buildManager = BuildManager.instance;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -107,4 +113,21 @@ public class Turret : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+
+void OnMouseDown()
+    {
+        buildManager.tui.Show(this);
+        buildManager.selectTurret(this);
+    }
+
+    public void setNode (Node node)
+    {
+        this.node = node;
+    }
+
+    public Node getNode()
+    {
+        return node;
+    }
+
 }
