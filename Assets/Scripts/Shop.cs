@@ -4,7 +4,7 @@ using UnityEngine;
 public class Shop : MonoBehaviour{
 
 public TurretBlueprint standardTurret;
-public TurretBlueprint missileLauncher;
+public TurretBlueprint cannon;
 public TurretBlueprint standardTower;
 
 
@@ -24,9 +24,10 @@ BuildManager buildManager;
         buildManager.BuildTurret(standardTurret);
     }
 
-    public void SelectMissileLauncher ()
+    public void SelectCannon ()
     {
-                buildManager.BuildTurret(missileLauncher);
+        Debug.Log("cannon selected");
+                buildManager.BuildTurret(cannon);
 
     }
     public void SelectTower ()

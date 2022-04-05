@@ -271,6 +271,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1536507508a570da479c346ad54e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    buildY: 2
+    upgradedPrefab: {fileID: 0}
+    upgradeCost: 0
   fireRate: 0.25
   range: 30
   followingBullet: 0

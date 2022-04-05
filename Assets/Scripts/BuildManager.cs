@@ -76,10 +76,13 @@ public class BuildManager : MonoBehaviour
 
     public void BuildTurret (TurretBlueprint blueprint)
     {
+        int offset = 0;
         if(selectedNode == null)
         {
             return;
         }
+
+        Debug.Log(blueprint.buildY);
 
  if(PlayerStats.Money < blueprint.cost)
         {
@@ -89,8 +92,16 @@ public class BuildManager : MonoBehaviour
 
         PlayerStats.Money -= blueprint.cost;
                     
-  
-        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+    if(blueprint.buildY > 0)
+    {
+        Debug.Log("yes");
+offset = blueprint.buildY;
+    }
+
+Vector3 buildPos = GetBuildPosition();
+buildPos.y += offset;
+
+        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, buildPos , Quaternion.identity);
        _turret.GetComponent<Turret>().setNode(selectedNode);
        selectedNode.turret = _turret;
        selectedNode.Deselect();
@@ -109,6 +120,8 @@ public class BuildManager : MonoBehaviour
        {
            return selectedTurret.transform.position + positionOffset;
        }
+
+      
        return selectedNode.transform.position + positionOffset;
    }
 
