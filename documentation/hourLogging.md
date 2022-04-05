@@ -11,6 +11,7 @@
 |24.3|5|Pause menu, upgrading/selling of turrets|
 |29.3| 8| Added some assets and changed the GUI|
 |31.3| 6| Added new enemies and a new tower|
-| total   | 32,5   |  
+4.4| 5 | Modified shop, upgrading and selling |
+| total   | 37,5   |  
 
 
