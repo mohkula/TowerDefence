@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     {
         if(gameIsOver)
         {
+            PlayerStats.Lives = 0;
             return;
         }
 

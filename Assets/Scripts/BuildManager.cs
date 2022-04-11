@@ -94,7 +94,6 @@ public class BuildManager : MonoBehaviour
                     
     if(blueprint.buildY > 0)
     {
-        Debug.Log("yes");
 offset = blueprint.buildY;
     }
 

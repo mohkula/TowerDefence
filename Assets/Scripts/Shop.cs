@@ -26,7 +26,6 @@ BuildManager buildManager;
 
     public void SelectCannon ()
     {
-        Debug.Log("cannon selected");
                 buildManager.BuildTurret(cannon);
 
     }

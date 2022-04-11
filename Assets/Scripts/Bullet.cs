@@ -21,14 +21,12 @@ private bool following = true;
 
    public void Seek (Transform _target)
    {
-    Debug.Log("seeking");
        following = true;
 target = _target;
    }
 
    public void setLandingSpot(Vector3 spot)
    {
-       Debug.Log("landing spot set");
        following = false;
 landingSpot = spot;
    }
@@ -46,7 +44,6 @@ moveFollowing();
 }
 
    else{
-       Debug.Log("move");
        moveToLandingSpot();
    }    
 
@@ -116,7 +113,6 @@ moveFollowing();
 
     void Damage (Transform enemy)
     {
-        Debug.Log("damaging");
         Enemy e = enemy.GetComponent<Enemy>();
 
         if (e != null)
@@ -134,7 +130,6 @@ moveFollowing();
         
         foreach(Collider collider in colliders)
         {
-            Debug.Log(collider.tag);
             if (collider.tag == "Enemy")
             {
                 Damage (collider.transform);

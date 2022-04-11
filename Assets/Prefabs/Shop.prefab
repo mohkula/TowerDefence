@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 561e0a0ff02a6a661b9af90c9316828c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c8383d3895243f8eebb8c302ed519179, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -643,7 +643,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.6132076, g: 0.130162, b: 0.130162, a: 1}
     m_HighlightedColor: {r: 0.23584908, g: 0.11013707, b: 0.11013707, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -668,7 +668,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2747913009615076591}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
-        m_MethodName: SelectMissileLauncher
+        m_MethodName: SelectCannon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1054,16 +1054,19 @@ MonoBehaviour:
   standardTurret:
     prefab: {fileID: 862920433304688937, guid: 4dcb6cbab0fdb89c6b66aa1dfaa43723, type: 3}
     cost: 100
+    buildY: 0
     upgradedPrefab: {fileID: 1970254283698202757, guid: 83dd01c63833aec8498310733c374a76, type: 3}
     upgradeCost: 50
   cannon:
     prefab: {fileID: 3251335078581586833, guid: 86c914deb38b2bc8ab5715795d65caaa, type: 3}
     cost: 100
+    buildY: 2
     upgradedPrefab: {fileID: 862920433304688937, guid: 4dcb6cbab0fdb89c6b66aa1dfaa43723, type: 3}
     upgradeCost: 200
   standardTower:
     prefab: {fileID: 7360132516906359200, guid: f2b95441415dfcbde980eb1dbd71e925, type: 3}
     cost: 100
+    buildY: 0
     upgradedPrefab: {fileID: 7360132516906359200, guid: f2b95441415dfcbde980eb1dbd71e925, type: 3}
     upgradeCost: 200
   ui: {fileID: 6889354265036232215}

@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour{
+    public string mainMenu = "MainMenu";
 
 public GameObject ui;
 void Update ()
@@ -37,7 +38,9 @@ public void Toggle ()
 
     public void Menu ()
     {
-        Debug.Log("Menu");
+        Toggle();
+        SceneManager.LoadScene(mainMenu);
+
     }
 
 }

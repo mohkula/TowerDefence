@@ -40,6 +40,10 @@ public TurretBlueprint blueprint;
     {
          buildManager = BuildManager.instance;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        if(gameObject.GetComponent<BoxCollider>() == null)
+    {
+        Debug.Log("BOX COLLIDER NEEDS TO BE ADDED");
+    }
     }
 
     void UpdateTarget (){

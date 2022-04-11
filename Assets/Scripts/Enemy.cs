@@ -24,6 +24,11 @@ public class Enemy : MonoBehaviour
     void Start (){
         target = Waypoints.points[0];
         health = startHealth;
+    if(gameObject.GetComponent<BoxCollider>() == null)
+    {
+        Debug.Log("BOX COLLIDER NEEDS TO BE ADDED");
+    }
+
     }
 
     public void TakeDamage (float amount)

@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3251335078581586833}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 10.31, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.4}
   m_Children:
   - {fileID: 7674811419339536573}
   m_Father: {fileID: 0}
@@ -100,11 +100,11 @@ MonoBehaviour:
     prefab: {fileID: 3251335078581586833}
     cost: 100
     buildY: 2
-    upgradedPrefab: {fileID: 862920433304688937, guid: 4dcb6cbab0fdb89c6b66aa1dfaa43723, type: 3}
+    upgradedPrefab: {fileID: 3251335078581586833}
     upgradeCost: 100
-  fireRate: 2
+  fireRate: 0.25
   range: 30
-  followingBullet: 1
+  followingBullet: 0
   enemyTag: Enemy
   partToRotate: {fileID: 3251335078581301007}
   turnSpeed: 10
