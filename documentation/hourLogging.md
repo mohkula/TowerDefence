@@ -12,6 +12,7 @@
 |29.3| 8| Added some assets and changed the GUI|
 |31.3| 6| Added new enemies and a new tower|
 4.4| 5 | Modified shop, upgrading and selling |
-| total   | 37,5   |  
+|25.4| 4| graphical GUI changes|
+| total   | 41,5   |  
 
 
