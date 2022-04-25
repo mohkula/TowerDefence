@@ -5,6 +5,8 @@ public class TurretUi : MonoBehaviour
 
     public GameObject ui;
 
+    
+
     public Text upgradeCost;
 
     public Text sellAmount;
@@ -21,11 +23,11 @@ public class TurretUi : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    public void Show (Turret turret)
+    public void Show (TurretBlueprint turret)
     {
 ui.SetActive(true);
-sellAmount.text = turret.blueprint.GetSellAmount().ToString();
-upgradeCost.text = turret.blueprint.GetUpgradeCost().ToString();
+sellAmount.text = turret.GetSellAmount().ToString();
+upgradeCost.text = turret.GetUpgradeCost().ToString();
 
     }
 
@@ -38,17 +40,24 @@ upgradeCost.text = turret.blueprint.GetUpgradeCost().ToString();
 
        
    buildManager.UpgradeTurret();
-    ui.SetActive(false);
+Toggle(false);
     }
 
     public void Sell()
     {
                 
    buildManager.sellTurret();
-    ui.SetActive(false);
+   Toggle(false);
     
       
        
+    }
+
+    public void Toggle(bool b)
+    {
+        ui.SetActive(b);
+        
+
     }
 
 

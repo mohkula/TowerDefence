@@ -19,8 +19,14 @@ private float countdown = 2f;
 
 public Text waveCountdownText;
 
-private int waveIndex = 0;
+public int waveIndex = 0;
 
+
+void Start()
+{
+    EnemiesAlive = 0;
+    waveIndex = 0;
+}
 void Update (){
 
 if(EnemiesAlive > 0)
@@ -62,7 +68,7 @@ Wave wave = waves[waveIndex];
                {
                 SpawnEnemy(wave.enemies[i].enemy);
              
-                yield return new WaitForSeconds(1f / wave.enemies[0].rate);   
+                yield return new WaitForSeconds(wave.enemies[0].rate);   
                } 
                 
           yield return new WaitForSeconds(1f / timeBetweenWaves);   
@@ -74,6 +80,11 @@ Wave wave = waves[waveIndex];
        
     }
     waveIndex++;
+
+    if(waveIndex >= waves.Length)
+    {
+        waveIndex = 0;
+    }
     
 
     

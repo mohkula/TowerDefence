@@ -11,10 +11,8 @@ GameObject:
   - component: {fileID: 3251335078581301007}
   - component: {fileID: 3251335078582550545}
   - component: {fileID: 3251335078583328263}
-  - component: {fileID: 1897084582601550107}
-  - component: {fileID: 5986699567325763535}
   m_Layer: 0
-  m_Name: Cannon
+  m_Name: Cannonhover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f8b608e94c1896a45a7bbec00ebde6e9, type: 2}
+  - {fileID: 2100000, guid: 0b23aa911e0423c18aa0c0a5d142e0fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,40 +82,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1897084582601550107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3251335078581586833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1536507508a570da479c346ad54e65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fireRate: 0.25
-  range: 15
-  followingBullet: 0
-  type: Cannon
-  enemyTag: Enemy
-  partToRotate: {fileID: 3251335078581301007}
-  turnSpeed: 10
-  bulletPrefab: {fileID: 3977908623046427817, guid: 30a5b6937bcba4971add28763154dcde, type: 3}
-  firePoint: {fileID: 7674811419339536573}
---- !u!65 &5986699567325763535
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3251335078581586833}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 7.5776, y: 5.3891, z: 17.4181}
-  m_Center: {x: 0, y: -0.83224994, z: -3.91515}
 --- !u!1 &5144008594429868745
 GameObject:
   m_ObjectHideFlags: 0

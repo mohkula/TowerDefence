@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.EventSystems;
 
 using UnityEngine;
 
@@ -12,7 +13,7 @@ private Node node;
 
 [Header("Attributes")]
 
-public TurretBlueprint blueprint;
+
  public float fireRate = 1f;
     private float fireCountdown = 0f;
     public float range = 15f;
@@ -22,6 +23,7 @@ public TurretBlueprint blueprint;
 
 
 [Header("Unity setup Fields")]
+    public string type;
     public string enemyTag = "Enemy";
 
     public Transform partToRotate;
@@ -120,8 +122,15 @@ public TurretBlueprint blueprint;
 
 void OnMouseDown()
     {
-        buildManager.tui.Show(this);
+        if(EventSystem.current.IsPointerOverGameObject()){
+           return;
+       }
+
+        buildManager.tui.Show(buildManager.shop.getBluePrintByType(type));
+        buildManager.tui.Toggle(true);
+        buildManager.shop.Toggle(false);
         buildManager.selectTurret(this);
+        buildManager.drawRange();
     }
 
     public void setNode (Node node)

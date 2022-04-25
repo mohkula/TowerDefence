@@ -8,6 +8,14 @@ public class BuildManager : MonoBehaviour
     public static BuildManager instance;
     public Vector3 positionOffset;
 
+
+        public GameObject rangeShower;
+
+        private GameObject rangeObject;
+
+
+
+
     public Shop shop;
 
     public TurretUi tui;
@@ -40,8 +48,10 @@ public class BuildManager : MonoBehaviour
     public void SelectNode (Node node)
     {
         shop.Toggle(true);
-
-       
+if(rangeObject != null)
+{
+       Destroy(rangeObject.gameObject);
+}
         selectedNode = node;
         turretToBuild = null;
 
@@ -49,6 +59,10 @@ public class BuildManager : MonoBehaviour
 
     public void selectTurret (Turret turret)
     {
+        if(rangeObject != null)
+{
+       Destroy(rangeObject.gameObject);
+}
         selectedTurret = turret;
     }
     public void SelectTurretToBuild(TurretBlueprint turret)
@@ -82,7 +96,6 @@ public class BuildManager : MonoBehaviour
             return;
         }
 
-        Debug.Log(blueprint.buildY);
 
  if(PlayerStats.Money < blueprint.cost)
         {
@@ -130,20 +143,23 @@ buildPos.y += offset;
 
   public void UpgradeTurret()
     {
-         if(PlayerStats.Money < selectedTurret.blueprint.upgradeCost)
+
+        TurretBlueprint bp = shop.getBluePrintByType(selectedTurret.type);
+
+         if(PlayerStats.Money < bp.upgradeCost)
         {
            Debug.Log("Not enough money to upgrade");
            return;
         }
 
-        PlayerStats.Money -= selectedTurret.blueprint.upgradeCost;
+        PlayerStats.Money -= bp.upgradeCost;
 
         Node nodeTurretWasOn = selectedTurret.getNode();
         Destroy(selectedTurret.gameObject);
 
                    
 
-        GameObject _turret = Instantiate(selectedTurret.blueprint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
+        GameObject _turret = Instantiate(bp.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
       
  _turret.GetComponent<Turret>().setNode(nodeTurretWasOn);
     
@@ -155,10 +171,25 @@ buildPos.y += offset;
 
     public void sellTurret()
     { 
+
+                TurretBlueprint bp = shop.getBluePrintByType(selectedTurret.type);
+
         
-        PlayerStats.Money += selectedTurret.blueprint.GetSellAmount();
+        PlayerStats.Money += bp.GetSellAmount();
           Destroy(selectedTurret.gameObject);
          
+
+    }
+
+
+    public void drawRange()
+    {
+
+
+
+
+        rangeObject = Instantiate(rangeShower, selectedTurret.transform.position, Quaternion.identity);
+        rangeObject.transform.localScale = new Vector3(selectedTurret.range * 2,selectedTurret.range * 2,selectedTurret.range * 2);
 
     }
 

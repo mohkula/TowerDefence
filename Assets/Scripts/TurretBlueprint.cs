@@ -11,6 +11,8 @@ public class TurretBlueprint
 
     public GameObject upgradedPrefab;   
 
+    public GameObject hoverPrefab;
+
     public int upgradeCost;
 
     

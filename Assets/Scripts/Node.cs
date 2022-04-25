@@ -5,7 +5,12 @@ public class Node : MonoBehaviour{
 
     public Color hoverColor;
 
+
+    
+
     private bool selected = false;
+
+    private GameObject hover;
 
 
    [HideInInspector]
@@ -48,7 +53,7 @@ public class Node : MonoBehaviour{
 if(EventSystem.current.IsPointerOverGameObject()){
            return;
        }
-       
+       buildManager.tui.Toggle(false);
        
         if (turret != null)
         {
@@ -87,13 +92,12 @@ if(EventSystem.current.IsPointerOverGameObject()){
 
    void OnMouseEnter()
    {
+       Debug.Log("entered");
 
 
-if (turret != null)
-        {
-           
-           return;
-        }
+
+
+
 
    rend.enabled = true;
 
@@ -101,12 +105,24 @@ if (turret != null)
            return;
        }
 
+              if(buildManager.shop.getSelectedTurret() != null)
+{
+             hover = (GameObject)Instantiate(buildManager.shop.getSelectedTurret().hoverPrefab, transform.position , Quaternion.identity);
+
+}
+if (turret != null)
+        {
+           
+           return;
+        }
       
 
        if (!buildManager.CanBuild)
         {
             return;
         }
+
+
 
  
 
@@ -125,6 +141,12 @@ if (turret != null)
 
    void OnMouseExit()
    {
+       Debug.Log("exited");
+       if(hover != null)
+       {
+       Destroy(hover.gameObject);
+
+       }
          if(!selected){
 
          rend.enabled = false;
