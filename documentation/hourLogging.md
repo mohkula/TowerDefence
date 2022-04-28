@@ -13,6 +13,7 @@
 |31.3| 6| Added new enemies and a new tower|
 4.4| 5 | Modified shop, upgrading and selling |
 |25.4| 4| graphical GUI changes|
-| total   | 41,5   |  
+|27.4| 6| level select and new levels|
+| total   | 47,5   |  
 
 
