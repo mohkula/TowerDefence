@@ -7,7 +7,7 @@ public class TurretBlueprint
     public GameObject prefab;
     public int cost;
 
-    public int buildY;
+    
 
     public GameObject upgradedPrefab;   
 

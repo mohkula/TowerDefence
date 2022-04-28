@@ -8,6 +8,8 @@ public class BuildManager : MonoBehaviour
     public static BuildManager instance;
     public Vector3 positionOffset;
 
+    public Transform nodes;
+
 
         public GameObject rangeShower;
 
@@ -68,15 +70,15 @@ if(rangeObject != null)
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
-        DeselectNode();
+     //   DeselectNode();
     }
 
-    public void DeselectNode ()
-    {
-        selectedNode.Deselect();
-        selectedNode = null;
+   // public void DeselectNode ()
+    //{
+     //   selectedNode.Deselect();
+      //  selectedNode = null;
         
-    }
+    //}
 
     public TurretBlueprint GetTurretToBuild()
     {
@@ -88,13 +90,41 @@ if(rangeObject != null)
         return selectedNode;
     }
 
-    public void BuildTurret (TurretBlueprint blueprint)
+
+public void showBuildableNodes(bool show)
+{
+
+      if(rangeObject != null)
+{
+       Destroy(rangeObject.gameObject);
+}
+
+       foreach(Transform child in nodes)
+{
+   Node script = child.gameObject.GetComponent<Node>(); 
+   
+   if(show && script.CanBuild)
+   {
+       script.highLight(show);
+   }
+   else{
+       script.highLight(false);
+
+   }
+  
+}
+}
+    public void BuildTurret (Node node)
     {
+        
+        TurretBlueprint  blueprint = shop.getSelectedTurret();
+
+ 
         int offset = 0;
-        if(selectedNode == null)
-        {
-            return;
-        }
+       // if(selectedNode == null)
+        //{
+          //  return;
+        //}
 
 
  if(PlayerStats.Money < blueprint.cost)
@@ -105,20 +135,22 @@ if(rangeObject != null)
 
         PlayerStats.Money -= blueprint.cost;
                     
-    if(blueprint.buildY > 0)
-    {
-offset = blueprint.buildY;
-    }
+ 
 
-Vector3 buildPos = GetBuildPosition();
-buildPos.y += offset;
+Vector3 buildPos = GetBuildPosition(node.transform.position);
+
+
 
         GameObject _turret = (GameObject)Instantiate(blueprint.prefab, buildPos , Quaternion.identity);
-       _turret.GetComponent<Turret>().setNode(selectedNode);
-       selectedNode.turret = _turret;
-       selectedNode.Deselect();
-       selectedNode = null;
-       shop.Toggle(false);
+       _turret.GetComponent<Turret>().setNode(node);
+     //  selectedNode.turret = _turret;
+      // selectedNode.Deselect();
+      // selectedNode = null;
+
+      node.CanBuild = false;
+
+      showBuildableNodes(false);
+       
 
       
 
@@ -126,15 +158,15 @@ buildPos.y += offset;
      
     }
 
-    public Vector3 GetBuildPosition ()
+    public Vector3 GetBuildPosition (Vector3 node)
    {
-       if(selectedNode == null)
-       {
-           return selectedTurret.transform.position + positionOffset;
-       }
+      // if(selectedNode == null)
+       //{
+         //  return selectedTurret.transform.position + positionOffset;
+       //}
 
       
-       return selectedNode.transform.position + positionOffset;
+       return node + positionOffset;
    }
 
    
@@ -159,7 +191,7 @@ buildPos.y += offset;
 
                    
 
-        GameObject _turret = Instantiate(bp.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
+        GameObject _turret = Instantiate(bp.upgradedPrefab, GetBuildPosition(nodeTurretWasOn.transform.position), Quaternion.identity);
       
  _turret.GetComponent<Turret>().setNode(nodeTurretWasOn);
     
@@ -185,12 +217,23 @@ buildPos.y += offset;
     public void drawRange()
     {
 
+if(rangeObject == null)
 
-
-
-        rangeObject = Instantiate(rangeShower, selectedTurret.transform.position, Quaternion.identity);
+{
+ rangeObject = Instantiate(rangeShower, selectedTurret.transform.position, Quaternion.identity);
         rangeObject.transform.localScale = new Vector3(selectedTurret.range * 2,selectedTurret.range * 2,selectedTurret.range * 2);
 
+}
+else{
+
+   
+
+       Destroy(rangeObject.gameObject);
+
+}
+
+
+       
     }
 
 }

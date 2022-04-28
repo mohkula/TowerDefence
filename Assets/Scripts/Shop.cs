@@ -29,21 +29,21 @@ BuildManager buildManager;
 
     public void SelectMageTower ()
     {
-        buildManager.BuildTurret(mageTower);
-        selectedTurret = mageTower;
+ buildManager.showBuildableNodes(true);   
+      selectedTurret = mageTower;
     }
 
     public void SelectCannon ()
     {
-                buildManager.BuildTurret(cannon);
+                buildManager.showBuildableNodes(true);
                         selectedTurret = cannon;
 
 
     }
     public void SelectTower ()
     {
-                buildManager.BuildTurret(standardTower);
-                        selectedTurret = standardTower;
+ buildManager.showBuildableNodes(true);
+                         selectedTurret = standardTower;
 
 
     }

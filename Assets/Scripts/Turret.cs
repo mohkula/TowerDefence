@@ -130,6 +130,7 @@ void OnMouseDown()
         buildManager.tui.Toggle(true);
         buildManager.shop.Toggle(false);
         buildManager.selectTurret(this);
+       
         buildManager.drawRange();
     }
 

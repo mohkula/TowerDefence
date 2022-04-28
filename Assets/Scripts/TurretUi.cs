@@ -41,6 +41,8 @@ upgradeCost.text = turret.GetUpgradeCost().ToString();
        
    buildManager.UpgradeTurret();
 Toggle(false);
+buildManager.shop.Toggle(true);
+buildManager.drawRange();
     }
 
     public void Sell()
@@ -48,6 +50,9 @@ Toggle(false);
                 
    buildManager.sellTurret();
    Toggle(false);
+   buildManager.shop.Toggle(true);
+   buildManager.drawRange();
+
     
       
        

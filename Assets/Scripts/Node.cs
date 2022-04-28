@@ -30,13 +30,15 @@ public class Node : MonoBehaviour{
     public Color notEnoughMoneyColor;
     public Color cannotBuildHere;
 
+    public bool CanBuild;
+
    
     BuildManager buildManager;
 
     void Start()
     {
 
-
+        CanBuild = true;
         rend = GetComponent<Renderer>();
         rend.enabled = false;
         startColor = rend.material.color;
@@ -46,8 +48,29 @@ public class Node : MonoBehaviour{
         
     }
 
+    public void highLight(bool show)
+    {
+        if(show)
+        {
+rend.material.color = selectColor;
+                  rend.enabled = true;
+        }
+
+        else{
+            rend.enabled = false;
+        }
+          
+
+
+    }
+
     void OnMouseDown()
     {
+
+        if(!CanBuild)
+        {
+            return;
+        }
 
       
 if(EventSystem.current.IsPointerOverGameObject()){
@@ -61,15 +84,17 @@ if(EventSystem.current.IsPointerOverGameObject()){
            return;
         }
 
-        if(buildManager.getSelectedNode() != null)
-        {
-            buildManager.DeselectNode();
-        }
+      //  if(buildManager.getSelectedNode() != null)
+       // {
+          //  buildManager.DeselectNode();
+       // }
 
 
-  rend.material.color = selectColor;
-      buildManager.SelectNode(this);
+  //rend.material.color = selectColor;
+      buildManager.BuildTurret(this);
       selected = true;
+
+      
              
 
 
@@ -92,14 +117,12 @@ if(EventSystem.current.IsPointerOverGameObject()){
 
    void OnMouseEnter()
    {
-       Debug.Log("entered");
 
+         if(!CanBuild)
+        {
+            return;
+        }
 
-
-
-
-
-   rend.enabled = true;
 
        if(EventSystem.current.IsPointerOverGameObject()){
            return;
@@ -141,17 +164,16 @@ if (turret != null)
 
    void OnMouseExit()
    {
-       Debug.Log("exited");
        if(hover != null)
        {
        Destroy(hover.gameObject);
 
        }
-         if(!selected){
+    //     if(!selected){
 
-         rend.enabled = false;
-rend.material.color = startColor;
-         } 
+  //       rend.enabled = false;
+//rend.material.color = startColor;
+       //  } 
        
    }
 

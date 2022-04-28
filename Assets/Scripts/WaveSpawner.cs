@@ -17,21 +17,33 @@ public float timeBetweenWaves = 5f;
 
 private float countdown = 2f;
 
+private bool levelWon;
+
 public Text waveCountdownText;
 
 public int waveIndex = 0;
 
+public GameManager gameManager;
+
 
 void Start()
 {
+    levelWon = false;
     EnemiesAlive = 0;
     waveIndex = 0;
 }
 void Update (){
 
+
+
 if(EnemiesAlive > 0)
 {
     return;
+}
+
+if(levelWon)
+{
+    gameManager.WinLevel();
 }
 
 if(countdown <= 0f)
@@ -83,7 +95,7 @@ Wave wave = waves[waveIndex];
 
     if(waveIndex >= waves.Length)
     {
-        waveIndex = 0;
+        levelWon = true;
     }
     
 

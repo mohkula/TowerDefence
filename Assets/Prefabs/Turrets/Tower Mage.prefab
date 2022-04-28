@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 1
-  range: 50
+  range: 30
   followingBullet: 1
   type: MageTower
   enemyTag: Enemy

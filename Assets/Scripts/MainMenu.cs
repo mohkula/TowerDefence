@@ -13,6 +13,12 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(levelToLoad);
     }
 
+
+    public void LevelSelect()
+    {
+        SceneManager.LoadScene("levelselect");
+    }
+
     public void Quit()
     {
 Debug.Log("Exiting...");
