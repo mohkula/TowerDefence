@@ -127,6 +127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 100
   speed: 25
-  damage: 50
+  damage: 45
   explosionRadius: 0
   impactEffect: {fileID: 4878347471457715145, guid: 1679b0bc11c875741ae555e4bb999f13, type: 3}

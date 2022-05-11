@@ -6,6 +6,10 @@ public class PauseMenu : MonoBehaviour{
     public string mainMenu = "MainMenu";
 
 public GameObject ui;
+public GameObject musicController;
+
+
+
 void Update ()
 {
 
@@ -41,6 +45,16 @@ public void Toggle ()
         Toggle();
         SceneManager.LoadScene(mainMenu);
 
+
+
     }
+
+    public void Mute()
+    {
+        
+        
+        musicController.GetComponent<AudioSource>().mute =  !musicController.GetComponent<AudioSource>().mute;
+    }
+
 
 }

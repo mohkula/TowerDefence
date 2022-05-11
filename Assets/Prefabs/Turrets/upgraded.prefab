@@ -13,8 +13,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 530633245657380836, guid: f2b95441415dfcbde980eb1dbd71e925, type: 3}
       propertyPath: fireRate
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 530633245657380836, guid: f2b95441415dfcbde980eb1dbd71e925, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 8300658469930574835, guid: b74b6d45de20ba266a5d0abbcd788d7a, type: 3}
     - target: {fileID: 530633245657380836, guid: f2b95441415dfcbde980eb1dbd71e925, type: 3}
       propertyPath: blueprint.prefab
       value: 

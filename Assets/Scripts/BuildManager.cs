@@ -206,9 +206,14 @@ Vector3 buildPos = GetBuildPosition(node.transform.position);
 
                 TurretBlueprint bp = shop.getBluePrintByType(selectedTurret.type);
 
+
         
         PlayerStats.Money += bp.GetSellAmount();
           Destroy(selectedTurret.gameObject);
+
+        Node nodeTurretWasOn = selectedTurret.getNode();
+
+        nodeTurretWasOn.CanBuild = true;
          
 
     }

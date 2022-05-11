@@ -1174,7 +1174,7 @@ MonoBehaviour:
   speed: 8
   partToRotate: {fileID: 6951515926175134223}
   turnSpeed: 10
-  startHealth: 200
+  startHealth: 100
   value: 50
   healthBar: {fileID: 1195416599035425805}
 --- !u!65 &-3249074135889401100

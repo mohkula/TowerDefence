@@ -41,7 +41,7 @@ if(EnemiesAlive > 0)
     return;
 }
 
-if(levelWon)
+if(levelWon && EnemiesAlive <= 0)
 {
     gameManager.WinLevel();
 }
