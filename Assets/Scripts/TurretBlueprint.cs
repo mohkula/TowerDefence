@@ -15,6 +15,9 @@ public class TurretBlueprint
 
     public int upgradeCost;
 
+    private float range;
+
+
     
 
 
@@ -26,6 +29,17 @@ public class TurretBlueprint
     public int GetUpgradeCost()
     {
         return cost * 2;
+    }
+
+    public float getRange()
+    {
+        return prefab.gameObject.GetComponent<Turret>().range;
+    }
+
+    public bool isUpgraded()
+    {
+                return upgradedPrefab.gameObject.GetComponent<Turret>().isUpgraded;
+
     }
 
     

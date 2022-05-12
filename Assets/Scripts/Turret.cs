@@ -19,6 +19,8 @@ private Node node;
     public float range = 15f;
 
     public bool followingBullet = true;
+
+    public bool isUpgraded = false;
     
 
 
@@ -126,7 +128,7 @@ void OnMouseDown()
            return;
        }
 
-        buildManager.tui.Show(buildManager.shop.getBluePrintByType(type));
+        buildManager.tui.Show(buildManager.shop.getBluePrintByType(type),this);
         buildManager.tui.Toggle(true);
         buildManager.shop.Toggle(false);
         buildManager.selectTurret(this);

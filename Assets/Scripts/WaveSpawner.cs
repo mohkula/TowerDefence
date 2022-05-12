@@ -26,9 +26,9 @@ public int waveIndex = 0;
 public GameManager gameManager;
 
 
-void Start()
+void Awake()
 {
-    levelWon = false;
+levelWon = false;
     EnemiesAlive = 0;
     waveIndex = 0;
 }
@@ -44,6 +44,8 @@ if(EnemiesAlive > 0)
 if(levelWon && EnemiesAlive <= 0)
 {
     gameManager.WinLevel();
+    EnemiesAlive = 0;
+    return;
 }
 
 if(countdown <= 0f)
@@ -96,6 +98,7 @@ Wave wave = waves[waveIndex];
     if(waveIndex >= waves.Length)
     {
         levelWon = true;
+        yield break;
     }
     
 

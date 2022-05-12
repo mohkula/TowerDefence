@@ -12,7 +12,7 @@ public Text mageTowerCost;
 public Text cannonCost;
 public Text standardTowerCost;
 
-private TurretBlueprint selectedTurret;
+public TurretBlueprint selectedTurret;
     public GameObject ui;
 
 BuildManager buildManager;

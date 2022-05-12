@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: a64e471aa5d289917ade8a7126febc21, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -759,7 +759,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.38447848, g: 0.46936694, b: 0.6037736, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1394,7 +1394,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732692217}
   m_LocalRotation: {x: -0, y: 0.588562, z: -0, w: 0.80845207}
-  m_LocalPosition: {x: 0, y: 0, z: 2.135}
+  m_LocalPosition: {x: 0, y: 0, z: 3.528}
   m_LocalScale: {x: 0.00243024, y: 0.00230224, z: 0.004}
   m_Children:
   - {fileID: 2096415459}

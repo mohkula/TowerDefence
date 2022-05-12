@@ -70,15 +70,9 @@ if(rangeObject != null)
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
-     //   DeselectNode();
     }
 
-   // public void DeselectNode ()
-    //{
-     //   selectedNode.Deselect();
-      //  selectedNode = null;
-        
-    //}
+ 
 
     public TurretBlueprint GetTurretToBuild()
     {
@@ -121,15 +115,11 @@ public void showBuildableNodes(bool show)
 
  
         int offset = 0;
-       // if(selectedNode == null)
-        //{
-          //  return;
-        //}
+       
 
 
  if(PlayerStats.Money < blueprint.cost)
         {
-            Debug.Log("Not enough money to build");
             return;
         }
 
@@ -143,28 +133,18 @@ Vector3 buildPos = GetBuildPosition(node.transform.position);
 
         GameObject _turret = (GameObject)Instantiate(blueprint.prefab, buildPos , Quaternion.identity);
        _turret.GetComponent<Turret>().setNode(node);
-     //  selectedNode.turret = _turret;
-      // selectedNode.Deselect();
-      // selectedNode = null;
+   
 
       node.CanBuild = false;
 
       showBuildableNodes(false);
+      shop.selectedTurret = null;
        
 
-      
-
-
-     
     }
 
     public Vector3 GetBuildPosition (Vector3 node)
    {
-      // if(selectedNode == null)
-       //{
-         //  return selectedTurret.transform.position + positionOffset;
-       //}
-
       
        return node + positionOffset;
    }
@@ -177,7 +157,10 @@ Vector3 buildPos = GetBuildPosition(node.transform.position);
     {
 
         TurretBlueprint bp = shop.getBluePrintByType(selectedTurret.type);
-
+        if(bp.isUpgraded())
+        {
+            return;
+        }
          if(PlayerStats.Money < bp.upgradeCost)
         {
            Debug.Log("Not enough money to upgrade");
@@ -187,17 +170,21 @@ Vector3 buildPos = GetBuildPosition(node.transform.position);
         PlayerStats.Money -= bp.upgradeCost;
 
         Node nodeTurretWasOn = selectedTurret.getNode();
+        
         Destroy(selectedTurret.gameObject);
 
                    
 
         GameObject _turret = Instantiate(bp.upgradedPrefab, GetBuildPosition(nodeTurretWasOn.transform.position), Quaternion.identity);
       
+
+
  _turret.GetComponent<Turret>().setNode(nodeTurretWasOn);
+ _turret.GetComponent<Turret>().isUpgraded = true;
     
     nodeTurretWasOn.turret = _turret;
 
-         Debug.Log("Turret upgraded");
+        
 
     }
 

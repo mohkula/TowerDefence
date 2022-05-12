@@ -8,6 +8,7 @@ public class TurretUi : MonoBehaviour
     
 
     public Text upgradeCost;
+      public Text upgradeText;
 
     public Text sellAmount;
     public Button upgradeButton;
@@ -23,12 +24,23 @@ public class TurretUi : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    public void Show (TurretBlueprint turret)
+    public void Show (TurretBlueprint turret, Turret tur)
     {
+
+      
 ui.SetActive(true);
 sellAmount.text = turret.GetSellAmount().ToString();
+if(tur.isUpgraded)
+{
+    upgradeText.text = "";
+    upgradeCost.text = "Max level";
+
+}
+else
+{
 upgradeCost.text = turret.GetUpgradeCost().ToString();
 
+}
     }
 
     
@@ -51,11 +63,15 @@ buildManager.drawRange();
    buildManager.sellTurret();
    Toggle(false);
    buildManager.shop.Toggle(true);
-   buildManager.drawRange();
-
-    
-      
+   buildManager.drawRange(); 
        
+    }
+     
+    public void Cancel()
+    {
+        Toggle(false);
+buildManager.shop.Toggle(true);
+buildManager.drawRange();
     }
 
     public void Toggle(bool b)

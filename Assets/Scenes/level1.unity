@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.7341993, g: 0.68562657, b: 0.6929194, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -539,9 +539,9 @@ RectTransform:
   m_Father: {fileID: 822275607}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 168.6606, y: -22.5234}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 337.3212, y: 45.0468}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &143252052
@@ -4283,6 +4283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui: {fileID: 267983779}
   upgradeCost: {fileID: 1889268898}
+  upgradeText: {fileID: 0}
   sellAmount: {fileID: 837615428}
   upgradeButton: {fileID: 182884362}
 --- !u!1 &963194225
@@ -4321,8 +4322,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.19215688, g: 0.39070135, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6270,11 +6271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8213225540093128792, guid: 042094c64641b57edb7b1fb4d6a003b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.64
+      value: -0.24
       objectReference: {fileID: 0}
     - target: {fileID: 8213225540093128792, guid: 042094c64641b57edb7b1fb4d6a003b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 32.67
+      value: 31.5
       objectReference: {fileID: 0}
     - target: {fileID: 8213225540093128792, guid: 042094c64641b57edb7b1fb4d6a003b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8328,7 +8329,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1927472808
 RectTransform:
   m_ObjectHideFlags: 0

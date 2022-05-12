@@ -11,6 +11,8 @@ public class Node : MonoBehaviour{
     private bool selected = false;
 
     private GameObject hover;
+    private GameObject rangeGhost;
+
 
 
    [HideInInspector]
@@ -84,13 +86,9 @@ if(EventSystem.current.IsPointerOverGameObject()){
            return;
         }
 
-      //  if(buildManager.getSelectedNode() != null)
-       // {
-          //  buildManager.DeselectNode();
-       // }
+      
 
 
-  //rend.material.color = selectColor;
       buildManager.BuildTurret(this);
       selected = true;
 
@@ -118,6 +116,11 @@ if(EventSystem.current.IsPointerOverGameObject()){
    void OnMouseEnter()
    {
 
+       if(!rend.enabled)
+       {
+           return;
+       }
+
          if(!CanBuild)
         {
             return;
@@ -131,7 +134,13 @@ if(EventSystem.current.IsPointerOverGameObject()){
               if(buildManager.shop.getSelectedTurret() != null)
 {
              hover = (GameObject)Instantiate(buildManager.shop.getSelectedTurret().hoverPrefab, transform.position , Quaternion.identity);
-
+             if(buildManager.rangeShower != null)
+             {
+                rangeGhost = (GameObject)Instantiate(buildManager.rangeShower, transform.position, Quaternion.identity);
+                rangeGhost.transform.localScale = new Vector3(buildManager.shop.getSelectedTurret().getRange() * 2,buildManager.shop.getSelectedTurret().getRange() * 2,buildManager.shop.getSelectedTurret().getRange() * 2);
+             }
+            
+            
 }
 if (turret != null)
         {
@@ -169,11 +178,12 @@ if (turret != null)
        Destroy(hover.gameObject);
 
        }
-    //     if(!selected){
+       if(rangeGhost != null)
+       {
+       Destroy(rangeGhost.gameObject);
 
-  //       rend.enabled = false;
-//rend.material.color = startColor;
-       //  } 
+       }
+ 
        
    }
 
