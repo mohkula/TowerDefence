@@ -21,7 +21,11 @@ The player can either use the WASD keys to move the camera, or move the cursor t
 The game is made with C# using Unity. The assets are from the Unity asset store, some of which have been slightly modified using Blender. Biggest problem for me was figuring out the different settings for the downloaded assets. What worked on some assets might not work for the other ones. Also testing was challenging.
 
 
-## Uml
+## Architecture UML
+
+![Untitled Diagram](https://user-images.githubusercontent.com/62248076/168607490-cb5c4504-265d-441c-b109-cfc7acfb9462.jpg)
+
+
 
 ## Extending the program:
 
