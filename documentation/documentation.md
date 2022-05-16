@@ -1,21 +1,33 @@
 
 # Documentation
 
-# Name: 
+## Name: 
 Tower Defence
 
-# Team members:
+## Team members:
 
 Matias Himanen
 
-# Description of the game:
+## Description of the game:
 
 This is a tower defence type of game in which you need to build different towers to stop the enemy from getting accross the map.
 Defeated enemies give money which is used to build new towers or to upgrade existing ones.
 
-# Insructions:
+## Instructions:
 
 The player can either use the WASD keys to move the camera, or move the cursor to the edge of the screen in the direction where they want the camera to move. The scroll wheel can be used to zoom in and out. The player can use the mouse to select buildable towers and select a place to build them in by using the mouse. Upgrading is also done with the mouse by clicking on the existing towers.
+
+## Technical design:
+The game is made with C# using Unity. The assets are from the Unity asset store, some of which have been slightly modified using Blender. Biggest problem for me was figuring out the different settings for the downloaded assets. What worked on some assets might not work for the other ones. Also testing was challenging.
+
+
+## Uml
+
+## Extending the program:
+
+The game needs more balancing with the amount of money recieved from enemies and the stats of the towers and enemies. Some sort of story mode would be nice and there should be more enemies, towers and levels. Some sort of score system would also be good.
+
+
 
 ## Hour logging
 
