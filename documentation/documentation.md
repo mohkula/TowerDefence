@@ -1,7 +1,23 @@
 
-## Documentation
+# Documentation
 
-# Hour logging
+# Name: 
+Tower Defence
+
+# Team members:
+
+Matias Himanen
+
+# Description of the game:
+
+This is a tower defence type of game in which you need to build different towers to stop the enemy from getting accross the map.
+Defeated enemies give money which is used to build new towers or to upgrade existing ones.
+
+# Insructions:
+
+The player can either use the WASD keys to move the camera, or move the cursor to the edge of the screen in the direction where they want the camera to move. The scroll wheel can be used to zoom in and out. The player can use the mouse to select buildable towers and select a place to build them in by using the mouse. Upgrading is also done with the mouse by clicking on the existing towers.
+
+## Hour logging
 
 | day | time | description  |
 | :----:|:-----| :-----|
