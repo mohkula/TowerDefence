@@ -26,6 +26,11 @@ The game is made with C# using Unity. The assets are from the Unity asset store,
 ![Untitled Diagram](https://user-images.githubusercontent.com/62248076/168607490-cb5c4504-265d-441c-b109-cfc7acfb9462.jpg)
 
 
+## Testing
+
+The game is playtested by me and a couple of friends. Fixing the problems when finding them during playtesting was sometimes straightforward, but many times when fixing one problem, more problems occured.
+
+
 
 ## Extending the program:
 
