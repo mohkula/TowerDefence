@@ -14,7 +14,7 @@
 4.4| 5 | Modified shop, upgrading and selling |
 |25.4| 4| graphical GUI changes|
 |27.4| 6| level select and new levels|
-|5.5||7| added new enemy and fixed lighting|
+|5.5 | 7| added new enemy and fixed lighting|
 | total   | 54,5   |  
 
 
